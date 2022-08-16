@@ -376,3 +376,33 @@ export default EnhancedFormLabel;
 Xem thêm:
 
 - [State classes](https://mui.com/material-ui/customization/how-to-customize/#state-classes)
+
+## TypeScript
+
+### Any
+
+Khai báo type rõ ràng ngay từ đầu, hạn chế sử dụng **any** nhiều nhất khi có thể.
+
+### Event
+
+Đối với các trình xử lý sự kiện, không viết trực tiếp vào JSX, thay vào đó sẽ tạo hàm ở trên và tham chiếu xuống ở dưới.
+
+Các type cho các sự kiện phổ biến đều được cung cấp trong `types/react`, ví dụ:
+
+```tsx
+import TextField from '@mui/material/TextField';
+import { useState } from 'react';
+import type { ChangeEvent } from 'types/react'; // ✅✅✅
+
+const Input = () => {
+  const [value, setValue] = useState<string>('');
+
+  const handleChange: ChangeEvent = (event) => {
+    setValue(event.target.value);
+  };
+
+  return <TextField value={value} onChange={handleChange} name="name" />;
+};
+
+export default Input;
+```
