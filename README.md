@@ -243,6 +243,21 @@ Xem thêm:
 - [Container](https://mui.com/material-ui/react-container/)
 - [Breakpoints](https://mui.com/material-ui/customization/breakpoints/)
 
+### Typography
+
+Đối với **Typography**, không sử dụng đơn vị **fontSize**, thay vào đó sử dụng **variant**:
+
+```tsx
+<Typography variant="h6">Heading 6</Typography>
+```
+
+Sử dụng **gutterBottom** nếu cần thêm khoảng cách với dòng phía dưới.
+
+Xem thêm:
+
+- [Typography](https://mui.com/material-ui/react-typography/)
+- [Font weight](https://mui.com/system/typography/#font-weight)
+
 ### Styles
 
 Ưu tiên sử dụng **sx** để style cho component, trong trường hợp logic css quá phức tạp hoặc cần export để dùng chung thì mới sử dụng **styled**:
