@@ -400,9 +400,9 @@ Khai báo type rõ ràng ngay từ đầu, hạn chế sử dụng **any** nhi�
 
 ### Event
 
-Đối với các trình xử lý sự kiện, không viết trực tiếp vào JSX, thay vào đó sẽ tạo hàm ở trên và tham chiếu xuống ở dưới.
+Đối với các trình xử lý sự kiện, **không viết trực tiếp vào JSX**, thay vào đó sẽ tạo hàm ở trên và tham chiếu xuống ở dưới.
 
-Các type cho các sự kiện phổ biến đều được cung cấp trong `types/react`, ví dụ:
+Các *type* cho các sự kiện phổ biến đều được cung cấp trong `types/react`, ví dụ:
 
 ```tsx
 import TextField from '@mui/material/TextField';
@@ -421,3 +421,16 @@ const Input = () => {
 
 export default Input;
 ```
+Ngoài ra, khi viết trình xử lý sự kiện, cần khai báo hàm rõ ràng, tránh trả về giá trị ngầm, trừ khi có chủ đích:
+
+```tsx
+// Sử dụng ✅✅✅
+const handleChange: ChangeEvent = (event) => {
+  setValue(event.target.value);
+};
+
+// Thay vì
+const handleChange: ChangeEvent = (event) =>
+  setValue(event.target.value); ❌❌❌
+```
+> Quy tắc này áp dụng cho tất cả các hàm mũi tên khác.
